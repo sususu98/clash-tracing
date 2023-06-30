@@ -29,14 +29,14 @@ services:
     depends_on:
       - loki
   traffic_scraper:
-    image: vi0oss/websocat:0.10.0
+    image: sususu98/websocat:latest
     container_name: traffic_scraper
     restart: always
     command: -v --autoreconnect-delay-millis 15000 autoreconnect:ws://$CLASH_HOST/traffic?token=$CLASH_TOKEN autoreconnect:tcp:vector:9000
     depends_on:
       - vector
   tracing_scraper:
-    image: vi0oss/websocat:0.10.0
+    image: sususu98/websocat:latest
     container_name: tracing_scraper
     restart: always
     command: -v --autoreconnect-delay-millis 15000 autoreconnect:ws://$CLASH_HOST/profile/tracing?token=$CLASH_TOKEN autoreconnect:tcp:vector:9000
